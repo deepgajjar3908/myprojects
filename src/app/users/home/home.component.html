@@ -1,0 +1,23 @@
+<div>
+    <h2 style="text-align: center; ">Welcome to Homepage</h2>
+    <app-search (search_text_change)="on_search_change($event)"></app-search>
+</div>
+<div style="background-color: aliceblue;" class="card">
+    <div class="card-body">
+        <h4>Hello,</h4>
+        <p>{{newuser}}</p>
+    </div>
+</div>
+
+<div style="background-color: aliceblue;" class="card">
+    <div class="card-body">
+        <h4>Name of users</h4>
+        <ul class="list-group"  >
+            <li class="list-group-item" *ngFor="let row of users">
+                <div *ngIf="search_text == '' || row.firstname.toLowerCase().includes(search_text) ">
+                {{ row.first_name }} {{row.firstname}} 
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

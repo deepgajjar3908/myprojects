@@ -1,0 +1,150 @@
+<h2 class="text-uppercase text-center mb-4">Create an account</h2>
+<form class="form" [formGroup]="formValue" (ngSubmit)="loginuser()" #myForm="ngForm">
+    <div class="row">
+        <div class="col">
+            <div class="form-outline m-2">
+                <label for="exampleInputEmail1">Firt Name</label>
+                <input type="text" ngModel class="form-control" id="firstname" aria-describedby="emailHelp"
+                    formControlName="firstname">
+                <!-- <span *ngIf="formValue.get('formValue.firstname').invalid">Error</span> -->
+                <div *ngIf="firstname && firstname.invalid ">
+                    <span *ngIf="firstname && firstname.errors?.['required'] && firstname.touched || myForm.submitted"
+                        style="color: red;">this field is
+                        invalid</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="form-outline m-2">
+                <label for="exampleInputPassword1">Last Name</label>
+                <input type="text" class="form-control" id="exampleInputPassword1" formControlName="lastname" ngModel>
+                <div *ngIf="lastname && lastname.invalid ">
+                    <span *ngIf="lastname && lastname.touched || myForm.submitted" style="color: red;">this field is
+                        invalid</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!------------------------------------------>
+
+    <div class="row ">
+        <div class="col">
+            <div class="form-group m-2">
+                <label for="gender">Select Gender</label> <br>
+                <input id="gender" type="radio" name="gender" value="m" formControlName="gender" ngModel />
+                <label class="radio-label"> Male &nbsp;&nbsp;</label>
+                <input id="gender" type="radio" name="gender" value="f" formControlName="gender" ngModel />
+                <label class="radio-label">Female</label> <br>
+                <div *ngIf="gender && gender.invalid ">
+                    <span *ngIf="gender && gender.touched || myForm.submitted" style="color: red;">this field is
+                        invalid</span>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group m-2">
+                <label for="emailid">Email ID</label>
+                <input type="email" class="form-control" id="emailid" formControlName="emailid">
+                <div *ngIf="emailid && emailid.invalid ">
+                    <span *ngIf="emailid && emailid.touched || myForm.submitted" style="color: red;">this field is
+                        invalid</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!------------------------------------------>
+
+
+    <div class="row ">
+        <div class="col">
+            <div class="form-group m-2">
+                <label for="mobileno">Mobile No:</label>
+                <input type="number" class="form-control" id="mobileno" formControlName="mobileno">
+                <div *ngIf="mobileno && mobileno.invalid ">
+                    <span *ngIf="mobileno &&  mobileno.touched || myForm.submitted" style="color: red;">this field is
+                        invalid</span>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group m-2">
+                <label for="opt">Select Country:</label>
+                <select class="form-control" (change)="changeCountry($event)" formControlName="countryname">
+                    <option value="">Select Country</option>
+                    <option *ngFor="let count of country" [ngValue]="count">
+                        {{count}}
+                    </option>
+                </select>
+                <div *ngIf="formValue.get('countryname')?.hasError('required')">
+                    <span *ngIf="formValue.get('countryname')?.touched || myForm.submitted" style="color: red;">this
+                        field is required .</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row ">
+        <div class="col">
+            <div class="form-group m-2">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" formControlName="password" ngModel>
+                <div *ngIf="password && password.invalid ">
+                    <span *ngIf="password  && password.touched || myForm.submitted" style="color: red;">Minimum 4 digits
+                        are required</span>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group m-2">
+                <label for="confirmpassword">Confirm Password</label>
+                <input formControlName="confirmpassword" id="confirmpassword" type="password" class="form-control"
+                    ngModel>
+                <!-- <span
+                                    *ngIf="confirmpassword && confirmpassword.touched && confirmpassword?.errors?.['ConfirmedValidator']">
+                                    Password and Confirm Password must be match
+                                </span> -->
+                <div *ngIf="confirmpassword && confirmpassword.invalid ">
+                    <span *ngIf="confirmpassword && confirmpassword.touched || myForm.submitted" style="color: red;">
+                        Password and Confirm Password must be match</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row ">
+        <div class="col mt-5">
+            <input type="checkbox" value="check" formControlName="check">
+            <span>Accept checkbox</span>
+            <div *ngIf="check && check.invalid ">
+                <span *ngIf="check && check.errors?.['required'] && check.touched || myForm.submitted"
+                    style="color: red;"> <br>
+                    please check on box</span>
+            </div>
+        </div>
+        <div class="col">
+            <label for="inputEmail4" class="form-label">Image Upload</label>
+            <input (change)="onImageChangeFromFile($event)" type="file" formControlName="imageInput"
+                class="form-control" id="inputEmail4">
+            <div *ngIf="imageInput && imageInput.invalid ">
+                <span *ngIf="imageInput && imageInput.touched || myForm.submitted" style="color: red;">
+                    <br>
+                    this field is invalid</span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="d-flex justify-content-center m-5">
+        <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+            (click)="postuserDetails()">Register</button>
+    </div>
+    <!-- <p>
+                                Your form status is : {{ formValue.status }}
+                              </p> -->
+    <p class="text-center text-muted mt-2 mb-0">Have already an account? <a routerLink="../login"
+            class="fw-bold text-body"><u>Login here</u></a></p>
+</form>
+<!-- <div>formValuevalid= {{ formValue.valid }}</div> -->

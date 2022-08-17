@@ -1,0 +1,101 @@
+<!-- <p>employee-dashboard works!</p> -->
+<nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">Project Details</span>
+    <button (click)="clickEvent()" type="button" class="btn btn-primary" 
+      (click)="open(mymodal)">ADD Project</button>
+</nav>
+
+<div class="table-responsive p-2">
+    <table class="table">
+        <thead class="bg-dark text-light">
+        <tr>
+            <th scope="col">Project ID</th>
+            <th scope="col">Project Name</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">Durations</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of projectData">
+            <td>{{row.id}}</td>
+            <td>{{row.projectname}}</td>
+            <td>{{row.date}}</td>
+            <td>{{row.duration}}</td>
+            <td>
+                <button class="btn btn-primary" (click)="editDetails(row)"
+                  (click)="open(mymodal)">Edit</button>
+                <button class="btn btn-danger mx-3" (click)="deleteDetails(row)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<ng-template #mymodal let-modal>
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Project</h5>
+                <button (click)="onClose()" type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form" [formGroup]="formValue" #thisForm="ngForm" (ngSubmit)="loginuser()">
+                    <div class="row g-4">
+                        <div class="col">
+                            <div class="form-group m-2">
+                                <label for="projectname">Project Name</label>
+                                <input type="text"  class="form-control" id="projectname" formControlName="projectname">
+                                <!-- <span *ngIf="formValue.get('formValue.projectname').invalid">Error</span> -->
+                                <div *ngIf="projectname && projectname.invalid ">
+                                    <span *ngIf="projectname && projectname.touched || thisForm.submitted"
+                                        style="color: red;">this field is
+                                        invalid</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group m-1">
+                                <label for="date">Date</label>
+                                <input type="date" class="form-control" id="date"
+                                    formControlName="date">
+                                <div *ngIf="date && date.invalid ">
+                                    <span *ngIf="date && date.touched || thisForm.submitted"
+                                        style="color: red;">this field is
+                                        invalid</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!------------------------------------------>
+
+
+                    <div class="row g-2">
+                        <div class="col">
+                            <div class="form-group m-1">
+                                <label for="duration">Duratin</label>
+                                <input type="text" class="form-control" id="duration" formControlName="duration">
+                                <div *ngIf="duration && duration.invalid ">
+                                    <span *ngIf="duration &&  duration.touched || thisForm.submitted"
+                                        style="color: red;">this field is invalid</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <p>
+                    Your form status is : {{ formValue.status }}
+                  </p> -->
+        
+                    <div class="modal-footer">
+                        <button (click)="onClose()" type="s" id="cancel" class="btn btn-secondary"
+                            data-dismiss="modal" (click)="modal.dismiss('Cross click')">Close</button>
+                        <button *ngIf="showadd" type="submit" class="btn btn-primary"
+                            (click)="postprojectDetails()" >ADD</button>
+                        <button *ngIf="showupdate" type="submit" class="btn btn-primary"
+                            (click)="updateDetails()" >Update</button>
+                    </div>
+                </form>
+            </div>
+</ng-template>

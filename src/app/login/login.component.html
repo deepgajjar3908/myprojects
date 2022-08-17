@@ -1,0 +1,50 @@
+<div class="container-fluid">
+  <div class="row" style="align-items: center;">
+    <!-- <div>
+      <notifier-container></notifier-container>
+  </div> -->
+    <div class="col">
+      <div class="d-flex justify-content-center">
+        <div class="mcol-sm-8 col-md-10">
+          <mat-icon>signin</mat-icon>
+          <form [formGroup]="loginForm" #myForm="ngForm" (ngSubmit)="loginuser()">
+
+            <div class="d-flex justify-content-center">
+              <mat-icon style="font-size:34px; height: 50px ;
+              width: 50px ;" aria-hidden="false">login</mat-icon>
+            </div>
+
+            <div class="form-group mb-4 text-start">
+              <label for="password">Email</label>
+              <input type="emailid" id="typeEmailX-2" class="form-control form-control-lg" formControlName="email" />
+              <div *ngIf="email && email.invalid ">
+                <span *ngIf="email && email.touched || myForm.submitted" style="color: red;">this field is
+                  invalid</span>
+              </div>
+            </div>
+
+            <div class="form-group mb-4 text-start">
+              <label for="password">Password</label>
+              <input type="password" id="typePasswordX-2" class="form-control form-control-lg"
+                formControlName="password" />
+              <div *ngIf="password && password.invalid ">
+                <span *ngIf="password && password.touched || myForm.submitted" style="color: red;">this field is
+                  invalid</span>
+              </div>
+
+            </div>
+
+            <!-- Checkbox -->
+            <div class="form-check d-flex justify-content-start mb-4">
+              <small><a routerLink="/forogt-password" style="text-decoration: none;">forgot password</a></small>
+            </div>
+
+            <div class="d-flex justify-content-center m-3">
+              <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+                (click)="onClick(email)" (click)="onSubmit()" >Loign</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,77 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "firstname": "Deep",
+      "lastname": "Gajjar",
+      "emailid": "deepgajjar3908@gmail.com",
+      "gender": "m",
+      "mobileno": 9409053222,
+      "countryname": "India",
+      "password": "1234",
+      "check": true,
+      "imageInput": "C:\\fakepath\\main2.jpg"
+    },
+    {
+      "id": 2,
+      "firstname": "Akhil",
+      "lastname": "Gajjar",
+      "emailid": "akhilgajjar8080@gmail.com",
+      "gender": "m",
+      "mobileno": 8468524562,
+      "countryname": "India",
+      "password": "abcd",
+      "confirmpassword": "abcd",
+      "check": true,
+      "imageInput": "C:\\fakepath\\main2.jpg"
+    },
+    {
+      "id": 3,
+      "firstname": "Akash",
+      "lastname": "Patel",
+      "emailid": "akpatel123@gamil.com",
+      "gender": "m",
+      "mobileno": 7895642134,
+      "countryname": "Canada",
+      "password": "8484",
+      "check": true,
+      "imageInput": "C:\\fakepath\\main2.jpg"
+    },
+    {
+      "id": 4,
+      "firstname": "Deep",
+      "lastname": "Gajjar",
+      "emailid": "deepgajjar3908@gmail.com",
+      "gender": "m",
+      "mobileno": 9409053222,
+      "countryname": "India",
+      "password": "1234",
+      "check": true,
+      "imageInput": "C:\\fakepath\\main2.jpg"
+    }
+  ],
+  "project": [
+    {
+      "id": 2,
+      "projectname": "demo",
+      "duration": "15 days",
+      "date": "2022-08-05"
+    },
+    {
+      "id": 3,
+      "projectname": "demo2",
+      "duration": "30 days",
+      "date": "2022-08-05"
+    },
+    {
+      "id": 4,
+      "projectname": "demo3",
+      "duration": "30 days",
+      "date": "2022-08-16"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

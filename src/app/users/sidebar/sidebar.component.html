@@ -1,0 +1,68 @@
+<!-- <div class="col-2 sidebar">
+    <ul class="navbar-nav m-4">
+        <li>
+           <h5>DashBoard</h5>
+        </li>
+        <li class="nav-item">
+            <a routerLink="/users/home" class="nav-link ">DashBoard</a>
+        </li>
+        <li class="nav-item">
+            <a  routerLink="/users/employee"  class="nav-link  ">Employee</a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="/users/project"  class="nav-link  ">Project</a>
+        </li>
+    </ul>
+</div> -->
+
+<mat-toolbar color="primary" class="example-toolbar">
+	<mat-icon mat-icon-button type="button" (click)="isExpanded = !isExpanded">menu</mat-icon>
+	<h1 class="example-app-name" style="font-family: merriweather; left:0;">Dashboard</h1>
+</mat-toolbar>  
+<mat-sidenav-container class="example-container" autosize>
+	<mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+		<mat-nav-list>
+			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent" routerLink="/users/home">
+				<span class="full-width" *ngIf="isExpanded || isShowing" >Home</span>
+				<mat-icon mat-list-icon>home</mat-icon>
+			</mat-list-item>
+            <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent" routerLink="/users/employee">
+				<span class="full-width" *ngIf="isExpanded || isShowing" >Employee</span>
+				<mat-icon mat-list-icon>manage_accounts</mat-icon>
+			</mat-list-item>
+            <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent"  routerLink="/users/project">
+				<span class="full-width" *ngIf="isExpanded || isShowing" >Project</span>
+				<mat-icon mat-list-icon>description</mat-icon>
+			</mat-list-item>
+			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent"  routerLink="/users/otp">
+				<span class="full-width" *ngIf="isExpanded || isShowing" >OTP</span>
+				<mat-icon mat-list-icon>chat</mat-icon>
+			</mat-list-item>
+			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent"  routerLink="/users/customdirective">
+				<span class="full-width" *ngIf="isExpanded || isShowing" >Custom Directive</span>
+				<mat-icon mat-list-icon>launch</mat-icon>
+			</mat-list-item>
+			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent"  routerLink="/users/usd">
+				<span class="full-width" *ngIf="isExpanded || isShowing" >USD Converter</span>
+				<mat-icon mat-list-icon>launch</mat-icon>
+			</mat-list-item>
+
+
+
+            <mat-list-item (click)="showSubmenu = !showSubmenu" (click)="logout()" class="parent" style="position:absolute; bottom: 0;">
+				<span class="full-width" *ngIf="isExpanded || isShowing" >Logout</span>
+				<mat-icon mat-list-icon>logout</mat-icon>
+			</mat-list-item>
+		</mat-nav-list>
+    <mat-nav-list>
+</mat-nav-list>
+	</mat-sidenav>
+
+	<div class="example-sidenav-content">
+		<router-outlet></router-outlet>
+	</div>
+
+</mat-sidenav-container>
+<!-- Copyright 2017 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
